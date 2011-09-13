@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string
+    name="bluetooth_uuid">aabe423c-81f3-41c3-89c3-3ebcb47a4b71</string>
+
+  <!-- BlueTooth MAC Address for a destination -->
+  <string
+    name="bluetooth_dest_address">XX:XX:XX:XX:XX:XX</string>
+</resources>
