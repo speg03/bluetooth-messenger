@@ -9,9 +9,12 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 public class ReceiveMessageActivity extends Activity {
+
+    private static final String TAG = ReceiveMessageActivity.class.getSimpleName();
 
     private BluetoothAdapter mAdapter;
     private BluetoothServerSocket mServerSocket;
@@ -19,10 +22,17 @@ public class ReceiveMessageActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate was called.");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.action);
 
         mAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mAdapter == null || !mAdapter.isEnabled()) {
+            Toast.makeText(this, "Bluetooth is not available.", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
         try {
             String uuid = getResources().getString(R.string.bluetooth_uuid);
             mServerSocket = mAdapter.listenUsingRfcommWithServiceRecord("BluetoothMessenger",
@@ -34,6 +44,7 @@ public class ReceiveMessageActivity extends Activity {
             bytes = is.read(buffer);
 
             String message = new String(buffer, 0, bytes);
+            Log.d(TAG, "received message: " + message);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         }
         catch (IOException e) {
@@ -43,6 +54,7 @@ public class ReceiveMessageActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        Log.d(TAG, "onDestroy was called.");
         super.onDestroy();
 
         try {
