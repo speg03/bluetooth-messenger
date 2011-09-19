@@ -20,7 +20,7 @@ public class ReceiveMessageActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.action);
 
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         try {
