@@ -28,7 +28,7 @@ public class ReceiveMessageActivity extends Activity {
 
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mAdapter == null || !mAdapter.isEnabled()) {
-            Toast.makeText(this, "Bluetooth is not available.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bluetooth is not available.", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -48,7 +48,7 @@ public class ReceiveMessageActivity extends Activity {
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Log.d(TAG, e.getMessage());
         }
     }
 
@@ -58,11 +58,15 @@ public class ReceiveMessageActivity extends Activity {
         super.onDestroy();
 
         try {
-            mServerSocket.close();
-            mSocket.close();
+            if (mServerSocket != null) {
+                mServerSocket.close();
+            }
+            if (mSocket != null) {
+                mSocket.close();
+            }
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Log.d(TAG, e.getMessage());
         }
     }
 

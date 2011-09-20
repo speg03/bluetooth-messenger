@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "MainActivity#onCreate was called.");
+        Log.d(TAG, "onCreate was called.");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);

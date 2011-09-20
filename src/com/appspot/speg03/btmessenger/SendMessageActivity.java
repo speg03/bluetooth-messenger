@@ -28,7 +28,7 @@ public class SendMessageActivity extends Activity {
 
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mAdapter == null || !mAdapter.isEnabled()) {
-            Toast.makeText(this, "Bluetooth is not available.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bluetooth is not available.", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -47,7 +47,7 @@ public class SendMessageActivity extends Activity {
             os.write(message.getBytes());
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Log.d(TAG, e.getMessage());
         }
     }
 
@@ -57,10 +57,12 @@ public class SendMessageActivity extends Activity {
         super.onDestroy();
 
         try {
-            mSocket.close();
+            if (mSocket != null) {
+                mSocket.close();
+            }
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Log.d(TAG, e.getMessage());
         }
     }
 
