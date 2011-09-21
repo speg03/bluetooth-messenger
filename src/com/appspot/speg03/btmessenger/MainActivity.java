@@ -35,6 +35,24 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        Button startButton = (Button) findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ReceiveMessageService.class);
+                startService(intent);
+            }
+        });
+
+        Button stopButton = (Button) findViewById(R.id.stopButton);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ReceiveMessageService.class);
+                stopService(intent);
+            }
+        });
     }
 
 }

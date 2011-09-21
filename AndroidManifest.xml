@@ -32,5 +32,8 @@
     <activity
       android:name=".ReceiveMessageActivity" />
 
+    <service
+      android:name=".ReceiveMessageService" />
+
   </application>
 </manifest>
