@@ -27,15 +27,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button receiveButton = (Button) findViewById(R.id.receiveButton);
-        receiveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ReceiveMessageActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Button startButton = (Button) findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
