@@ -33,7 +33,8 @@
       android:name=".ReceiveMessageActivity" />
 
     <service
-      android:name=".ReceiveMessageService" />
+      android:name=".ReceiveMessageService"
+      android:process=":btreceiver" />
 
   </application>
 </manifest>
