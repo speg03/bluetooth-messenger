@@ -1,4 +1,4 @@
-package com.appspot.speg03.btmessenger;
+package com.github.speg03.btmessenger;
 
 import java.io.IOException;
 import java.io.InputStream;
